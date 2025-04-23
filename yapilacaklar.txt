@@ -1,0 +1,1 @@
+harici olarak sec_register.php dosyasina yonlendir ilk basta 
