@@ -1,0 +1,13 @@
+{
+    "name": "omar/mailer",
+    "type": "mail",
+    "autoload": {
+        "psr-4": {
+            "Omar\\Mailer\\": "src/"
+        }
+    },
+    "require": {
+        "phpmailer/phpmailer": "^6.10",
+        "vlucas/phpdotenv": "^5.6"
+    }
+}
