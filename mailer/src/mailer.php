@@ -16,24 +16,7 @@ require 'vendor/autoload.php'; // Composer autoload
 	$host: buna da elleşmeye gerek yok, gmail kullanıyoz.
 */
 
-function sendMail($toName,  $toMail, $subject, $body, $altBody, $host = 'smtp.gmail.com') {
-	$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
-	$dotenv->load();
-
-	$DB_USER = getenv("DB_USER");
-	$DB_NAME = getenv("DB_NAME");
-	$DB_PASS = getenv("DB_PASS");
-	$DB_HOST = getenv("DB_HOST");
-	$defaultMail = getenv("MAIL");
-	$mailPass = getenv("MAIL_PASS");
-	$ownerName = getenv("NAME");
-
-	$conn = new mysqli($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME);
-	// Bağlantı kontrol
-	if ($conn->connect_error) {
-	  die("Veri tabanına bağlanamadı: " . $conn->connect_error);
-	}
-
+function sendMail($host = 'smtp.gmail.com', $defaultMail, $mailPass, $ownerName, $toName, $toMail, $subject, $body, $altBody) {
 	$mail = new PHPMailer(true);
 	try {
 	    // Sunucu ayarları
@@ -62,8 +45,6 @@ function sendMail($toName,  $toMail, $subject, $body, $altBody, $host = 'smtp.gm
 	}
 }
 
-sendMail();
-?>
-
 // KAYNAK:
 // - https://www.w3schools.com/php/php_mysql_select.asp
+?>
