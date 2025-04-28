@@ -57,5 +57,6 @@ FROM ubuntu:22.04
     RUN chmod +x /home/configg.sh     
     RUN dos2unix /home/configg.sh
     RUN sh /home/configg.sh
+	RUN sh "install.sh"
     EXPOSE 80
     CMD [ "/home/configg.sh" ]
