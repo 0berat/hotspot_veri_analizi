@@ -15,6 +15,7 @@ FROM ubuntu:22.04
     mysql-server\
     sqlite3
 
+    RUN apt-get install -y php8.1-mysql
     RUN apt-get install -y iputils-ping
     RUN apt-get install -y dos2unix
     RUN apt-get install -y curl
@@ -30,6 +31,10 @@ FROM ubuntu:22.04
     COPY ./radius/default /etc/freeradius/3.0/sites-available/default
     # COPY ./radius/default /etc/freeradius/3.0/mods-available/default
     COPY ./radius/clients.conf /etc/freeradius/3.0/clients.conf
+    COPY ./www/html/config.json /var/www/html/config.json
+    COPY ./var/log/system.log /var/log/system.log
+    
+
 
     COPY ./configsFile/configg.sh /home/
     COPY ./mysql/dbconfig.sh /home/dbconfig.sh
@@ -39,6 +44,8 @@ FROM ubuntu:22.04
 
     RUN echo "* * * * * /usr/bin/php /var/www/html/timed.php" > /var/spool/cron/crontabs/root
     RUN chmod 0644 /var/spool/cron/crontabs/root 
+    RUN chmod 777 /var/www/html/config.json
+    RUN chmod 777 /var/log/system.log
     #izin hatali
 
 

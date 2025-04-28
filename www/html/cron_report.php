@@ -28,7 +28,7 @@ $commands = [
     // 'grep -i "GET" /var/log/system.log' => 'attacks',
     'grep -i "Successful login for user" /var/log/system.log' => 'successful_logins',
     'grep -i "Authentication error" /var/log/system.log' => 'auth_errors'
-    // 'grep -i "REGISTER_SELF" /var/log/portalauth.log' => 'register_self',
+    // 'grep -i "New user added" /var/log/system.log' => 'register'
     // 'grep -i "authenticated" /var/log/openvpn.log' => 'openvpn_auth' //?
 ];
 $sayac= 0;

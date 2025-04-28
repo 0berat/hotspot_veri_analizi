@@ -1,6 +1,6 @@
 #!/bin/bash
 
-
+apt install php8.1-sqlite3
 service nginx restart
 service php8.1-fpm restart
 service freeradius restart

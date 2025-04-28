@@ -4,18 +4,18 @@ ini_set('display_errors', 1);
 
 include 'db_connect.php';
 
-$attacks = [];
+$register = [];
 $gateway_alarms = [];
 $successful_logins = [];
 
-// attacks tablosunu çek
-$query = $db->query("SELECT log_date, log_message FROM attacks ORDER BY log_date ASC");
+// register tablosunu çek (önceden attacks idi)
+$query = $db->query("SELECT log_date, log_message FROM register ORDER BY log_date ASC");
 while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
-    $attacks[] = $row;
+    $register[] = $row;
 }
 
 // gateway_alarms tablosunu çek
-$query = $db->query("SELECT log_date, log_message FROM gateway_alarms ORDER BY log_date ASC");
+$query = $db->query("SELECT log_date, log_message FROM auth_errors ORDER BY log_date ASC");
 while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
     $gateway_alarms[] = $row;
 }
@@ -28,7 +28,7 @@ while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
 
 // JSON olarak çıktıyı ver
 echo json_encode([
-    'attacks' => $attacks,
+    'register' => $register,
     'gateway_alarms' => $gateway_alarms,
     'successful_logins' => $successful_logins
 ]);

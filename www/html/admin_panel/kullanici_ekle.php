@@ -1,4 +1,24 @@
 <?php
+// require_once("func.inc");
+function log_auth_event($message) {
+    $logfile = '/var/log/system.log';
+
+    // Dosya yoksa oluştur
+    if (!file_exists($logfile)) {
+        file_put_contents($logfile, "");
+    }
+
+    // Dosya yazılabilir mi diye kontrol et
+    if (is_writable($logfile)) {
+        $date = date('M d H:i:s'); // Örn: Apr 28 15:11:38
+        $process = "php-fpm[" . getmypid() . "]"; // php-fpm[PID]
+
+        $line = "$date RaporAnaliz $process: /admin_login.php: $message" . PHP_EOL;
+        file_put_contents($logfile, $line, FILE_APPEND);
+    } else {
+        error_log("Log dosyasına yazılamadı: $logfile");
+    }
+}
 // Include config file
 session_start();
 require_once "../config.php";
