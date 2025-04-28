@@ -62,6 +62,11 @@ body {font-family: "Lato", sans-serif;}
   <a href="admin_panel/parola_uzunlugu.php"><i class="fa fa-cog"></i> Parola Uzunlugunu Belirle</a>
   <hr>
   <a href="admin_panel/zaman_kontrol.php"><i class="fa fa-cog"></i> Kullanici Suresi</a>
+  <a href="/status_report.php"><i class="fa fa-cog"></i> Rapor Analiz</a>
+  <a href="/zaman_kontrol.php"><i class="fa fa-cog"></i> Rapor Mail</a> 
+  <!-- mail bu sekilde olur -->
+  <a href="/grafikler.php"><i class="fa fa-chart-pie"></i> Rapor Grafik</a>
+  <a href="/logout.php"><i class="fa fa-chart-pie"></i> Çıkış yap</a>
 </div>
 
 <div class="main">

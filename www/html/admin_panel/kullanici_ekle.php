@@ -75,6 +75,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                          echo "<br>Yeni kullanici eklendi.";
                          echo "<br>";
                          $success_message = " Yeni kullanici eklendi.";
+                         
+                         $ip = $_SERVER['REMOTE_ADDR'];                       
+
+                         log_auth_event("New user added '$username' from: $ip (Local Database)");
         
                         // index.php yonlendir orda istegi al
                         header("location: kullanici_ekle.php?success_message=" . urlencode($success_message));

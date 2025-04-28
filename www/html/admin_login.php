@@ -1,7 +1,11 @@
 <?php
 // Initialize the session
+require_once("func.inc");
+
 session_start();
- 
+// error_reporting(E_ALL);
+// ini_set('display_errors', 1);
+
 // Check if the user is already logged in, if yes then redirect him to welcome page
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
     header("location: admin.php");
@@ -59,17 +63,24 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             // Store data in session variables
                             $_SESSION["loggedin"] = true;
                             $_SESSION["id"] = $id;
-                            $_SESSION["username"] = $username;                            
-                            
+                            $_SESSION["username"] = $username;     
+                            $ip = $_SERVER['REMOTE_ADDR'];                       
+                            log_auth_event("Successful login for user '$username' from: $ip (Local Database)");
                             // Redirect user to welcome page
                             header("location: admin.php");
                         } else{
                             // Password is not valid, display a generic error message
+                            $ip = $_SERVER['REMOTE_ADDR'];                       
+
+                            log_auth_event("Authentication error for user '$username' from: $ip (Local Database)");
                             $login_err = "Invalid username or password.";
                         }
                     }
                 } else{
                     // Username doesn't exist, display a generic error message
+                    $ip = $_SERVER['REMOTE_ADDR'];                       
+
+                    log_auth_event("Authentication error for user '$username' from: $ip (Local Database)");
                     $login_err = "Invalid username or password.";
                 }
             } else{

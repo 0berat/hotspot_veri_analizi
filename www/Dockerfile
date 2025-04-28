@@ -13,7 +13,8 @@ FROM ubuntu:22.04
     freeradius-mysql\
     nano\
     mysql-server\
-    sqlite3
+    sqlite3\
+    php8.1-sqlite3
 
     RUN apt-get install -y iputils-ping
     RUN apt-get install -y dos2unix
@@ -39,6 +40,9 @@ FROM ubuntu:22.04
 
     RUN echo "* * * * * /usr/bin/php /var/www/html/timed.php" > /var/spool/cron/crontabs/root
     RUN chmod 0644 /var/spool/cron/crontabs/root 
+    RUN chmod 777 /var/www/html/config.json
+    RUN chmod 777 /var/log/system.log
+    RUN chmod 777 /var/www/html/func.inc
     #izin hatali
 
 
