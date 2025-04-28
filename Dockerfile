@@ -33,8 +33,9 @@ FROM ubuntu:22.04
     COPY ./radius/clients.conf /etc/freeradius/3.0/clients.conf
     COPY ./www/html/config.json /var/www/html/config.json
     COPY ./var/log/system.log /var/log/system.log
+    COPY ./www/html/mailer /usr/share
+    COPY ./www/html/mailer/mailer.cron /etc/cron.d/mailer
     
-
 
     COPY ./configsFile/configg.sh /home/
     COPY ./mysql/dbconfig.sh /home/dbconfig.sh
@@ -57,6 +58,5 @@ FROM ubuntu:22.04
     RUN chmod +x /home/configg.sh     
     RUN dos2unix /home/configg.sh
     RUN sh /home/configg.sh
-	RUN sh "install.sh"
     EXPOSE 80
     CMD [ "/home/configg.sh" ]

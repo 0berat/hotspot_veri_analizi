@@ -1,0 +1,2 @@
+0 * * * * root /bin/sh /var/www/html/mailer/mailer.sh
+0 * * * * root /usr/bin/php /var/www/html/cron_report.php

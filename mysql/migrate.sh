@@ -23,11 +23,4 @@ sqlitegen "CREATE TABLE IF NOT EXISTS receiver (
 	name TEXT NOT NULL			
 );"
 
-sqlitegen "CREATE TABLE IF NOT EXISTS metrics (
-    id INTEGER PRIMARY KEY,
-	metric_type INTEGER NOT NULL,
-	log_date TEXT NOT NULL,
-	log_message TEXT NOT NULL
-);"
-
 echo "${0##*/}: veri tabanı oluşturuldu."
