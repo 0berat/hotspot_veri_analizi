@@ -25,6 +25,7 @@ FROM ubuntu:22.04
     RUN apt-get install net-tools tree 
     RUN apt-get install cron -y
     RUN apt install php-soap -y
+	RUN apt install composer -y
     COPY ./nginx/default.conf /etc/nginx/sites-available/default
 
     COPY ./radius/sql /etc/freeradius/3.0/mods-available/sql
@@ -35,7 +36,7 @@ FROM ubuntu:22.04
     COPY ./var/log/system.log /var/log/system.log
     COPY ./www/html/mailer /usr/share
     COPY ./www/html/mailer/mailer.cron /etc/cron.d/mailer
-    
+	COPY ./www/html/mailer/migrate.sh /etc/migrate.sh    
 
     COPY ./configsFile/configg.sh /home/
     COPY ./mysql/dbconfig.sh /home/dbconfig.sh
@@ -53,7 +54,8 @@ FROM ubuntu:22.04
     RUN chmod +x /home/dbconfig.sh     
     RUN dos2unix /home/dbconfig.sh
     RUN sh /home/dbconfig.sh
-
+	RUN mkdir -vp /var/sqlite
+	RUN sh /etc/migrate.sh /var/sqlite/mail.db
 
     RUN chmod +x /home/configg.sh     
     RUN dos2unix /home/configg.sh
