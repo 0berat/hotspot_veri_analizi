@@ -2,6 +2,6 @@
 
 set -e
 
-cd "/usr/share/mailer"
+cd "/var/www/html/mailer"
 [ ! -d "vendor" ] && composer install
 php "src/cron.php"

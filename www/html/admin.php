@@ -63,7 +63,8 @@ body {font-family: "Lato", sans-serif;}
   <hr>
   <a href="admin_panel/zaman_kontrol.php"><i class="fa fa-cog"></i> Kullanici Suresi</a>
   <a href="/status_report.php"><i class="fa fa-cog"></i> Rapor Analiz</a>
-  <a href="/zaman_kontrol.php"><i class="fa fa-cog"></i> Rapor Mail</a> 
+  <a href="mailer/view/rapor_gonderen.php"><i class="fa fa-cog"></i> Gönderen Mail</a> 
+  <a href="mailer/view/rapor_alici.php"><i class="fa fa-cog"></i> Alıcı Mail</a> 
   <a href="/status_report_details.php"><i class="fa fa-cog"></i> Rapor Liste</a> 
   <!-- mail bu sekilde olur -->
   <a href="/grafikler.php"><i class="fa fa-chart-pie"></i> Rapor Grafik</a>

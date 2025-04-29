@@ -10,13 +10,15 @@ sqlitegen() {
 	[ -n "${1}" ] && "${SQLITE}" "${DATABASE}" "${1}"
 }
 
-sqlitegen "CREATE TABLE IF NOT EXISTS owner (
+# rapor_gonderen
+sqlitegen "CREATE TABLE IF NOT EXISTS sender (
     id INTEGER PRIMARY KEY,
 	mail TEXT NOT NULL,
 	pass TEXT NOT NULL,
 	name TEXT NOT NULL	
 );"
 
+# rapor_alici
 sqlitegen "CREATE TABLE IF NOT EXISTS receiver (
     id INTEGER PRIMARY KEY,
 	mail TEXT NOT NULL,
